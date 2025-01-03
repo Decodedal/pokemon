@@ -1,0 +1,36 @@
+<odoo>
+    <template id="pokemon_detail" name="Pokémon Detail">
+        <t t-call="website.layout">
+                <div class="m-4">
+                    <a href="/pokemon/list" class="btn btn-primary">Go Back</a>
+                </div>
+            <div class="container pokemon-card">
+                <h1 class="text-center"><t t-out="pokemon['name'].capitalize()"/></h1>
+                <div class="text-center mt-4">
+                    <!-- Use proper escaping and ensure no <t> tags in attributes -->
+                    <img t-att-src="pokemon['sprite']" t-att-alt="'Sprite of ' + pokemon['name']" class="img-fluid"/>
+                </div>
+                <div class="mt-4">
+                    <h3>Details</h3>
+                    <p><strong>Height:</strong> <t t-out="pokemon['height']"/> decimetres</p>
+                    <p><strong>Weight:</strong> <t t-out="pokemon['weight']"/> hectograms</p>
+                    <h4>Types</h4>
+                    <ul>
+                        <t t-foreach="pokemon['types']" t-as="type">
+                            <li><t t-out="type.capitalize()"/></li>
+                        </t>
+                    </ul>
+                </div>
+            </div>
+        </t>
+    </template>
+    
+    <template id="pokemon_error" name="Error Page">
+        <t t-call="website.layout">
+            <div class="container mt-5">
+                <h1>Error</h1>
+                <p><t t-out="error"/></p>
+            </div>
+        </t>
+    </template>
+</odoo>

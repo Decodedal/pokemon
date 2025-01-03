@@ -1,0 +1,31 @@
+<odoo>
+    <data>
+        <template id="pokemon_list" name="Pokemon List">
+            <t t-call="website.layout">
+                <div class="container pokemon-list">
+                    <h1 class="text-center">Pokémon List</h1>
+                    <ul>
+                        <t t-foreach="pokemon_list" t-as="pokemon">
+                            <li>
+                                <a t-att-href="'/pokemon/' + pokemon['name']" class="btn btn-link">
+                                    <t t-out="pokemon['name']"/>
+                                </a>
+                            </li>
+                        </t>
+                    </ul>
+                </div>
+            </t>
+        </template>
+
+        <template id="error" name="Error Page">
+            <t t-call="website.layout">
+                <div class="container mt-5">
+                    <h1 class="text-danger">Error</h1>
+                    <p>
+                        <t t-out="error_message" />
+                    </p>
+                </div>
+            </t>
+        </template>
+    </data>
+</odoo>
